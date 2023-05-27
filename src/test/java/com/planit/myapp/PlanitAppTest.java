@@ -10,7 +10,7 @@ public class PlanitAppTest extends WebDriverBase
     @Test
     public void test01()
     {
-        System.out.println("@Test01 executed");
+        System.out.println("@Test01 ...");
 	    //Launch website
 	    driver.navigate().to(planitURL);
         driver.manage().window().maximize();
@@ -42,7 +42,7 @@ public class PlanitAppTest extends WebDriverBase
     @RepeatedTest(5)
     public void test02()
     {
-        System.out.println("@Test02 executed");
+        System.out.println("@Test02 ...");
 	    //Launch website
 	    driver.navigate().to(planitURL);    
         driver.manage().window().maximize();
@@ -64,7 +64,7 @@ public class PlanitAppTest extends WebDriverBase
     @Test
     public void test03()
     {
-        System.out.println("@Test03 executed");
+        System.out.println("@Test03 ...");
 	    //Launch website
 	    driver.navigate().to(planitURL);
      
@@ -116,7 +116,7 @@ public class PlanitAppTest extends WebDriverBase
 		float subtotalB = Float.parseFloat(subtotalBunny);
 		float subtotalV = Float.parseFloat(subtotalValentine);
 
-		//Verify that total = sum(sub totals)
+		//Verify that total = sum(subTotals)
 		float expectedTotal = subtotalF + subtotalB + subtotalV;
 		float total = 116.90f;
 		Assertions.assertEquals(expectedTotal, total, 0.01);     
