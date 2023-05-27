@@ -5,6 +5,12 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
+/**
+ * 
+ * @author Wendy Zhang
+ * mvn clean test -Dwebdriver.chrome.driver="C:\\Opt\\Selenium\\chromedriver.exe"
+ *
+ */
 public class PlanitAppTest extends WebDriverBase
 {
     @Test
