@@ -1,9 +1,17 @@
 package com.planit.myapp;
 
+import java.util.concurrent.TimeUnit;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
  * 
@@ -11,8 +19,8 @@ import org.openqa.selenium.By;
  * mvn clean test -Dwebdriver.chrome.driver="C:\\Opt\\Selenium\\chromedriver.exe"
  *
  */
-public class PlanitAppTest extends WebDriverBase
-{
+public class PlanitAppTest{
+	
     @Test
     public void test01()
     {
@@ -127,5 +135,35 @@ public class PlanitAppTest extends WebDriverBase
 		float total = 116.90f;
 		Assertions.assertEquals(expectedTotal, total, 0.01);     
     }    
+    
+    //-------------------------------------------------------- private variables
+	protected static WebDriver driver;
+	protected static String planitURL = "https://jupiter.cloud.planittesting.com/";
+	
+    //-------------------------------------------------------- lifecycle methods
+	@BeforeAll
+	static void setup(){
+		System.out.println("@BeforeAll");
+	    driver = new ChromeDriver();		
+	    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	    driver.get(planitURL);
+	}
+
+	@BeforeEach
+	void setupThis(){
+		System.out.println("@BeforeEach");
+	}
+
+    @AfterEach
+	void tearThis(){
+	    driver.manage().deleteAllCookies();
+    	System.out.println("@AfterEach");
+	}
+
+	@AfterAll
+	static void tear(){
+		System.out.println("@AfterAll");
+	    driver.close();
+	}
 
 }
